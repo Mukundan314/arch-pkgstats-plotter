@@ -9,10 +9,10 @@ import PackageList from './components/PackageList.vue';
 
 export default {
   name: 'App',
-  data () {
+  data() {
     return {
       packageNames: [],
-    }
+    };
   },
   components: {
     PackageList,

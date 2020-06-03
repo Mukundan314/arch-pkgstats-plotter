@@ -26,8 +26,8 @@ export default {
       validator: (value) => (new Set(value)).size === value.length,
     },
   },
-  data () {
-    return { addPackageName: "" };
+  data() {
+    return { addPackageName: '' };
   },
   methods: {
     addPackage() {
@@ -37,9 +37,9 @@ export default {
       }
     },
     removePackage(idx) {
-      this.$emit('input', this.packageNames.filter((_, i) => i != idx));
+      this.$emit('input', this.packageNames.filter((_, i) => i !== idx));
     },
-  }
+  },
 };
 </script>
 
