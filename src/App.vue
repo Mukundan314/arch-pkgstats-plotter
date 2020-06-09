@@ -1,21 +1,31 @@
 <template>
   <div id="app">
-    <package-list v-model="packageNames" />
+    <package-list id="package-list" v-model="packageNames" />
+    <package-plot
+      id="package-plot"
+      :package-names="packageNames"
+      :start-date="startDate"
+      :end-date="endDate"
+    />
   </div>
 </template>
 
 <script>
 import PackageList from './components/PackageList.vue';
+import PackagePlot from './components/PackagePlot';
 
 export default {
   name: 'App',
   data() {
     return {
       packageNames: [],
+      startDate: new Date(2018, 1),
+      endDate: new Date(2020, 1),
     };
   },
   components: {
     PackageList,
+    PackagePlot,
   },
 };
 </script>
@@ -26,9 +36,19 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-top: 4rem;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+#package-list {
+  width: 20%;
+  float: left
+}
+
+#package-plot {
+  height: calc(100vh - 8rem);
+  width: 77%;
+  float: right;
 }
 </style>

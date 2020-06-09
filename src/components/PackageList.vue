@@ -47,8 +47,7 @@ export default {
 .package-list {
   text-align: left;
 
-  width: 25%;
-  min-width: 15rem;
+  width: 100%;
 
   border: solid 1px #dbdbdb;
   border-radius: .5rem;
