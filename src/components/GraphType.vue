@@ -1,6 +1,10 @@
 <template>
   <div class="graph-type">
-    <button v-on:click="$emit('input', 'count')" :disabled="value === 'count'" class="count">Count</button>
+    <button
+      v-on:click="$emit('input', 'count')"
+      :disabled="value === 'count'"
+      class="count"
+    >Count</button>
     <button
       v-on:click="$emit('input', 'popularity')"
       :disabled="value === 'popularity'"
@@ -11,14 +15,14 @@
 
 <script>
 export default {
-  model: { prop: "value" },
+  model: { prop: 'value' },
   props: {
     value: {
       type: String,
-      default: "popularity",
-      validator: value => ["count", "popularity"].includes(value)
-    }
-  }
+      default: 'popularity',
+      validator: (value) => ['count', 'popularity'].includes(value),
+    },
+  },
 };
 </script>
 

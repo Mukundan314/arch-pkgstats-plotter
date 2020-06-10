@@ -23,7 +23,7 @@ import GraphType from './components/GraphType.vue';
 export default {
   name: 'App',
   data() {
-    let endDate = new Date();
+    const endDate = new Date();
     endDate.setMonth(endDate.getMonth() - 1);
 
     return {
