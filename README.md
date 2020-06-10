@@ -1,24 +1,6 @@
-# arch-pkgstats-plotter
+<h1 align="center">arch-pkgstats-plotter</h1>
+<div align="center">
+  <strong>:package: Plot Arch Linux Package Statistics :chart_with_upwards_trend:</strong>
+</div>
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+---
