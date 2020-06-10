@@ -55,8 +55,21 @@ export default {
       }));
 
       this.renderChart(
-        { labels: [...labels].sort(), datasets },
-        { responsive: true, maintainAspectRatio: false },
+        {
+          labels: [...labels].sort(),
+          datasets,
+        },
+        {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true,
+              },
+            }],
+          },
+        },
       );
     },
   },
