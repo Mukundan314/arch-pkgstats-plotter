@@ -9,8 +9,19 @@ export default {
       default: () => [],
       validator: (value) => (new Set(value)).size === value.length,
     },
-    startDate: { type: Date, required: true },
-    endDate: { type: Date, required: true },
+    startDate: {
+      type: Date,
+      required: true,
+    },
+    endDate: {
+      type: Date,
+      required: true,
+    },
+    graphType: {
+      type: String,
+      required: true,
+      validator: (value) => ['count', 'popularity'].includes(value),
+    },
   },
   async mounted() {
     this.renderLineChart();
@@ -35,9 +46,10 @@ export default {
 
         return {
           label: packageName,
+          backgroundColor: '#00000000',
           data: res.data.packagePopularities.map((popularity) => ({
             x: popularity.startMonth,
-            y: popularity.count,
+            y: popularity[this.graphType],
           })),
         };
       }));
@@ -49,8 +61,9 @@ export default {
     },
   },
   watch: {
-    packageNames() {
-      this.renderLineChart();
+    $props: {
+      handler() { this.renderLineChart(); },
+      deep: true,
     },
   },
 };

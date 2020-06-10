@@ -1,8 +1,13 @@
 <template>
   <div id="app">
-    <package-list id="package-list" v-model="packageNames" />
+    <div id="first-column">
+      <graph-type v-model="graphType" />
+      <package-list v-model="packageNames" />
+    </div>
+
     <package-plot
       id="package-plot"
+      :graph-type="graphType"
       :package-names="packageNames"
       :start-date="startDate"
       :end-date="endDate"
@@ -13,19 +18,25 @@
 <script>
 import PackageList from './components/PackageList.vue';
 import PackagePlot from './components/PackagePlot';
+import GraphType from './components/GraphType.vue';
 
 export default {
   name: 'App',
   data() {
+    let endDate = new Date();
+    endDate.setMonth(endDate.getMonth() - 1);
+
     return {
       packageNames: [],
+      graphType: 'popularity',
       startDate: new Date(2018, 1),
-      endDate: new Date(2020, 1),
+      endDate,
     };
   },
   components: {
     PackageList,
     PackagePlot,
+    GraphType,
   },
 };
 </script>
@@ -39,9 +50,10 @@ export default {
   margin-top: 4rem;
   margin-left: 5%;
   margin-right: 5%;
+  color: #333;
 }
 
-#package-list {
+#first-column {
   width: 20%;
   float: left
 }
