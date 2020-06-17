@@ -25,11 +25,12 @@ export default {
   data() {
     const params = new URLSearchParams(window.location.search);
     const packageNames = params.get('packages') ? params.get('packages').split(',') : [];
+    const graphType = params.get('graphType') ? params.get('graphType') : 'popularity';
     const endDate = new Date();
 
     return {
       packageNames,
-      graphType: 'popularity',
+      graphType,
       startDate: new Date(2018, 1),
       endDate,
     };
@@ -43,6 +44,11 @@ export default {
     packageNames(val) {
       const url = new URL(window.location.href);
       url.searchParams.set('packages', val.join(','));
+      window.history.replaceState({}, '', url.toString());
+    },
+    graphType(val) {
+      const url = new URL(window.location.href);
+      url.searchParams.set('graphType', val);
       window.history.replaceState({}, '', url.toString());
     },
   },
