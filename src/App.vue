@@ -23,11 +23,12 @@ import GraphType from './components/GraphType.vue';
 export default {
   name: 'App',
   data() {
+    const params = new URLSearchParams(window.location.search);
+    const packageNames = params.get('packages') ? params.get('packages').split(',') : [];
     const endDate = new Date();
-    endDate.setMonth(endDate.getMonth() - 1);
 
     return {
-      packageNames: [],
+      packageNames,
       graphType: 'popularity',
       startDate: new Date(2018, 1),
       endDate,
@@ -37,6 +38,13 @@ export default {
     PackageList,
     PackagePlot,
     GraphType,
+  },
+  watch: {
+    packageNames(val) {
+      const url = new URL(window.location.href);
+      url.searchParams.set('packages', val.join(','));
+      window.history.replaceState({}, '', url.toString());
+    },
   },
 };
 </script>
