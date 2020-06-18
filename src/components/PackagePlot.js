@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { Line } from 'vue-chartjs';
 
+const COLORS = ['#333333', '#1793d1', '#bc0404', '#008000', '#3d0195', '#92008c'];
+
 export default {
   extends: Line,
   props: {
@@ -30,7 +32,7 @@ export default {
     async renderLineChart() {
       let labels = new Set();
 
-      const datasets = await Promise.all(this.packageNames.map(async (packageName) => {
+      const datasets = await Promise.all(this.packageNames.map(async (packageName, idx) => {
         const params = {
           startMonth: `${this.startDate.getFullYear()}${String(this.startDate.getMonth() + 1).padStart(2, '0')}`,
           endMonth: `${this.endDate.getFullYear()}${String(this.endDate.getMonth() + 1).padStart(2, '0')}`,
@@ -46,6 +48,7 @@ export default {
 
         return {
           label: packageName,
+          borderColor: COLORS[idx % COLORS.length],
           backgroundColor: '#00000000',
           data: res.data.packagePopularities.map((popularity) => ({
             x: popularity.startMonth,
