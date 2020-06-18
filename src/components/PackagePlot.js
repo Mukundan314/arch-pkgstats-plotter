@@ -69,6 +69,7 @@ export default {
             yAxes: [{
               ticks: {
                 beginAtZero: true,
+                max: 100,
               },
             }],
           },
