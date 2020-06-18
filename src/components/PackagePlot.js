@@ -69,7 +69,7 @@ export default {
             yAxes: [{
               ticks: {
                 beginAtZero: true,
-                max: 100,
+                max: this.graphType === 'popularity' ? 100 : undefined,
               },
             }],
           },
