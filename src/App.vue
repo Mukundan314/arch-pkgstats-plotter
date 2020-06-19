@@ -22,6 +22,11 @@ import GraphType from './components/GraphType.vue';
 
 export default {
   name: 'App',
+  components: {
+    PackageList,
+    PackagePlot,
+    GraphType,
+  },
   data() {
     const params = new URLSearchParams(window.location.search);
     const packageNames = params.get('packages') ? params.get('packages').split(',') : [];
@@ -34,11 +39,6 @@ export default {
       startDate: new Date(2018, 1),
       endDate,
     };
-  },
-  components: {
-    PackageList,
-    PackagePlot,
-    GraphType,
   },
   watch: {
     packageNames(val) {
@@ -69,7 +69,7 @@ export default {
 
 #first-column {
   width: 20%;
-  float: left
+  float: left;
 }
 
 #package-plot {

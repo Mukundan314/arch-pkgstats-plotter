@@ -1,14 +1,29 @@
 <template>
   <div class="package-list">
-    <div class="heading">Packages</div>
-
-    <div v-for="(packageName, idx) in packageNames" :key="packageName" class="package">
-      <span class="package-name">{{ packageName }}</span>
-      <button v-on:click="removePackage(idx)">remove</button>
+    <div class="heading">
+      Packages
     </div>
 
-    <form class="package" v-on:submit.prevent="addPackage">
-      <input v-model="addPackageName" class="package-name" placeholder="Package" />
+    <div
+      v-for="(packageName, idx) in packageNames"
+      :key="packageName"
+      class="package"
+    >
+      <span class="package-name">{{ packageName }}</span>
+      <button @click="removePackage(idx)">
+        remove
+      </button>
+    </div>
+
+    <form
+      class="package"
+      @submit.prevent="addPackage"
+    >
+      <input
+        v-model="addPackageName"
+        class="package-name"
+        placeholder="Package"
+      >
       <button>add</button>
     </form>
   </div>
@@ -23,7 +38,7 @@ export default {
     packageNames: {
       type: Array,
       default: () => [],
-      validator: (value) => (new Set(value)).size === value.length,
+      validator: (value) => new Set(value).size === value.length,
     },
   },
   data() {
@@ -50,13 +65,13 @@ export default {
   width: 100%;
 
   border: solid 1px #dbdbdb;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
 
   overflow: hidden;
 }
 
 .heading, .package {
-  padding: .7rem 1rem;
+  padding: 0.7rem 1rem;
 }
 
 .heading {
@@ -83,12 +98,12 @@ button {
   background: none;
 
   margin-left: auto;
-  font-size: .75rem;
+  font-size: 0.75rem;
 
   box-shadow: none;
 
   border: solid 1px #dbdbdb;
-  border-radius: .2rem;
+  border-radius: 0.2rem;
 }
 
 button:hover {

@@ -1,15 +1,19 @@
 <template>
   <div class="graph-type">
     <button
-      v-on:click="$emit('input', 'count')"
       :disabled="value === 'count'"
       class="count"
-    >Count</button>
+      @click="$emit('input', 'count')"
+    >
+      Count
+    </button>
     <button
-      v-on:click="$emit('input', 'popularity')"
       :disabled="value === 'popularity'"
       class="popularity"
-    >Popularity</button>
+      @click="$emit('input', 'popularity')"
+    >
+      Popularity
+    </button>
   </div>
 </template>
 
