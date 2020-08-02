@@ -92,6 +92,7 @@ export default {
 input {
   width: 100%;
   border: 0;
+  outline: none;
 }
 
 button {
